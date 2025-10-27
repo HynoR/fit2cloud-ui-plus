@@ -9,11 +9,15 @@
 
 <script setup lang="ts">
 import {ref, inject} from "vue";
+import {ElInput} from "element-plus";
 import {FilterCondition, ReferenceContext, referenceKey} from "../types";
 import {useLocale, useSize} from "@/hooks"
 import {validateSize} from "@/tools/size";
 
-defineOptions({name: "FuFilterInputText"});
+defineOptions({
+  name: "FuFilterInputText",
+  components: {ElInput}
+});
 
 const props = defineProps({
   size: {

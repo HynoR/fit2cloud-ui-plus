@@ -33,9 +33,15 @@
 </template>
 <script lang="ts" setup>
 import { computed, getCurrentInstance, PropType } from "vue";
+import {ElDropdown, ElDropdownItem, ElDropdownMenu, ElIcon, ElTableColumn} from "element-plus";
+import {MoreFilled} from "@element-plus/icons-vue";
 import { DropdownProps } from "@/tools/types";
 
-defineOptions({ name: "FuTableColumnDropdown" });
+defineOptions({
+  name: "FuTableColumnDropdown",
+  components: {ElTableColumn, ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon, MoreFilled}
+});
+
 const props = defineProps({
   showType: {
     type: String,

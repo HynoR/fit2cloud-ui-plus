@@ -22,7 +22,7 @@ import { SpeedDialKey } from "./types";
 const props = defineProps({
   index: Number,
   icon: {
-    type: String,
+    type: [String, Object, Function],
     default: "Plus"
   },
   titleClass: String,

@@ -20,10 +20,12 @@
 </template>
 <script lang="ts" setup>
 import { computed, PropType } from "vue";
+import {ElButton, ElDropdown, ElDropdownItem, ElDropdownMenu, ElIcon} from "element-plus";
+import {MoreFilled} from "@element-plus/icons-vue";
 import { useLocale } from "@/hooks"
 import { DropdownProps } from "@/tools/types";
 
-defineOptions({ name: "FuTableMoreButton" });
+defineOptions({ name: "FuTableMoreButton", components: {ElDropdown, ElButton, ElIcon, ElDropdownMenu, ElDropdownItem, MoreFilled} });
 const { t } = useLocale()
 const props = defineProps({
   row: Object,

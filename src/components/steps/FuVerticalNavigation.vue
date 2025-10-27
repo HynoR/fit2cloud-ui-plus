@@ -17,7 +17,13 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue'
 import { computed } from "vue";
+import {ElCollapseTransition, ElStep, ElSteps} from "element-plus";
 import {Step} from "@/components/steps/Stepper";
+
+defineOptions({
+  name: "FuVerticalNavigation",
+  components: {ElSteps, ElStep, ElCollapseTransition}
+});
 const props = defineProps({
   stepper: Object,
   steps: Array as PropType<Step[]>,

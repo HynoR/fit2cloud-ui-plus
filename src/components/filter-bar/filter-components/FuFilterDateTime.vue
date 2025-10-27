@@ -14,12 +14,16 @@
 
 <script setup lang="ts">
 import {ref, computed, inject} from "vue";
+import {ElDatePicker} from "element-plus";
 import {FilterCondition, ReferenceContext, referenceKey} from "../types";
 import {datetimeFormat} from "@/tools/time";
 import {useLocale, useSize} from "@/hooks"
 import {validateSize} from "@/tools/size";
 
-defineOptions({name: "FuFilterDateTime"});
+defineOptions({
+  name: "FuFilterDateTime",
+  components: {ElDatePicker}
+});
 
 const props = defineProps({
   size: {

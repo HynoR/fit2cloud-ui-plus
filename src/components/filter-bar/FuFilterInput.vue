@@ -1,14 +1,19 @@
 <template>
-  <el-input class="fu-filter-input" prefix-icon="Search" v-model="quick" @blur="blur" @keydown="keydown"
+  <el-input class="fu-filter-input" :prefix-icon="Search" v-model="quick" @blur="blur" @keydown="keydown"
             @clear="clear" v-bind="$attrs" clearable :size="configSize"/>
 </template>
 
 <script setup lang="ts">
 import {ref} from "vue";
+import {ElInput} from "element-plus";
+import {Search} from "@element-plus/icons-vue";
 import {validateSize} from "@/tools/size";
 import {useSize} from "@/hooks";
 
-defineOptions({name: "FuFilterInput"});
+defineOptions({
+  name: "FuFilterInput",
+  components: {ElInput}
+});
 
 defineProps({
   size: {

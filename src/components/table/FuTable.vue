@@ -14,10 +14,11 @@
 
 <script lang="ts" setup>
 import {onMounted, useSlots, ref, watch, computed, onUpdated, VNodeNormalizedChildren, VNode} from "vue";
+import {ElTable} from "element-plus";
 import {isFix, getLabel, getProp, FuTableBody} from "@/components/table/FuTableBody";
 import {isValidElementNode, getChildren, isValidChildren} from "@/tools/vnode";
 
-defineOptions({name: "FuTable"});
+defineOptions({name: "FuTable", components: {ElTable}});
 const props = defineProps({
   columns: Array,
   refresh: {

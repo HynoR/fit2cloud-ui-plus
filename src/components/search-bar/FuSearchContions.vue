@@ -12,11 +12,13 @@
 
 <script setup lang="ts">
 import {PropType} from "vue";
+import {ElIcon} from "element-plus";
+import {Close} from "@element-plus/icons-vue";
 import {ComplexCondition} from "./types";
 import {validateSize} from "@/tools/size";
 import {useSize} from "@/hooks";
 
-defineOptions({name: "FuSearchConditions"});
+defineOptions({name: "FuSearchConditions", components: {ElIcon, Close}});
 
 const props = defineProps({
   size: {

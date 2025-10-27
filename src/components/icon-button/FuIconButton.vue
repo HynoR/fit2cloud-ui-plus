@@ -12,9 +12,13 @@
 <script setup lang="ts">
 
 import {computed} from "vue";
+import {ElIcon} from "element-plus";
 import {validateType} from "@/tools/theme";
 
-defineOptions({name: "FuIconButton"});
+defineOptions({
+  name: "FuIconButton",
+  components: {ElIcon}
+});
 
 const props = defineProps({
   name: String,

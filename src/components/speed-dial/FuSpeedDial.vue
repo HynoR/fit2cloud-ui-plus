@@ -44,11 +44,11 @@ const props = defineProps({
     validator: (value: string) => ["top", "bottom", "left", "right"].includes(value)
   },
   icon: {
-    type: String,
+    type: [String, Object, Function],
     default: "Plus"
   },
   activeIcon: {
-    type: String,
+    type: [String, Object, Function],
     default: "Close"
   },
   movable: {

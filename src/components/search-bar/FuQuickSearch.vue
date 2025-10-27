@@ -12,10 +12,12 @@
 
 <script setup lang="ts">
 import {computed, ref} from "vue";
+import {ElIcon} from "element-plus";
+import {Search} from "@element-plus/icons-vue";
 import {validateSize} from "@/tools/size";
 import {useSize} from "@/hooks";
 
-defineOptions({name: "FuQuickSearch"});
+defineOptions({name: "FuQuickSearch", components: {ElIcon, Search}});
 
 const props = defineProps({
   size: {

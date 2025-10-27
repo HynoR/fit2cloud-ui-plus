@@ -15,12 +15,16 @@
 
 <script setup lang="ts">
 import {ref, provide, computed, PropType, Ref, inject} from "vue";
+import {ElOption, ElSelect} from "element-plus";
 import {FilterCondition, OptionProps, ReferenceContext, referenceKey, selectKey} from "../types";
 
 import {useLocale, useSize} from "@/hooks"
 import {validateSize} from "@/tools/size";
 
-defineOptions({name: "FuFilterNormalSelect"});
+defineOptions({
+  name: "FuFilterNormalSelect",
+  components: {ElSelect, ElOption}
+});
 
 const props = defineProps({
   size: {

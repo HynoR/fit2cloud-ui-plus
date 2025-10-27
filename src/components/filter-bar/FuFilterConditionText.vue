@@ -6,7 +6,13 @@
 
 <script setup lang="ts">
 import {computed, nextTick, onMounted, onUpdated, PropType, ref} from "vue";
+import {ElTooltip} from "element-plus";
 import {FilterCondition} from "@/components/filter-bar/types";
+
+defineOptions({
+  name: "FuFilterConditionText",
+  components: {ElTooltip}
+});
 
 const props = defineProps({
   condition: {
