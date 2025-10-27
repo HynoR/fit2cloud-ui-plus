@@ -5,7 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-defineOptions({ name: "FuTablePagination" });
+import {ElPagination} from "element-plus";
+
+defineOptions({ name: "FuTablePagination", components: {ElPagination} });
 const props = defineProps({
   currentPage: {
     type: Number,

@@ -14,12 +14,13 @@
 
 <script setup lang="ts">
 import {ref, computed, inject} from "vue";
+import {ElDatePicker} from "element-plus";
 import {ComplexCondition, ReferenceContext, referenceKey} from "../types";
 import {datetimeFormat} from "@/tools/time";
 import {useLocale, useSize} from "@/hooks"
 import {validateSize} from "@/tools/size";
 
-defineOptions({name: "FuComplexDateTime"});
+defineOptions({name: "FuComplexDateTime", components: {ElDatePicker}});
 
 const props = defineProps({
   size: {

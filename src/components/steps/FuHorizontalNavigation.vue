@@ -8,6 +8,12 @@
 <script lang="ts" setup>
 import type {PropType} from 'vue'
 import {computed} from "vue";
+import {ElStep, ElSteps} from "element-plus";
+
+defineOptions({
+  name: "FuHorizontalNavigation",
+  components: {ElSteps, ElStep}
+});
 
 const props = defineProps({
   stepper: Object,

@@ -8,10 +8,10 @@
         <slot name="tr" :condition="conditionObj">
           <fu-filter-input :size="configSize" v-model="quick" :placeholder="quickPlaceholder" @change="execute"/>
         </slot>
-        <el-button class="fu-filter-button" @click="refresh" icon="Refresh" :size="configSize" v-if="showRefresh">
+        <el-button class="fu-filter-button" @click="refresh" :icon="Refresh" :size="configSize" v-if="showRefresh">
           {{ t('fu.filter_bar.refresh') }}
         </el-button>
-        <el-button class="fu-filter-button" @click="open" icon="Filter" :size="configSize">{{
+        <el-button class="fu-filter-button" @click="open" :icon="Filter" :size="configSize">{{
             t('fu.filter_bar.filter') }}
           <span v-if="conditions.length > 0">({{ conditions.length }})</span>
         </el-button>
@@ -29,12 +29,17 @@
 
 <script setup lang="ts">
 import {ref, computed} from "vue";
-import {useLocale, useSize} from "@/hooks"
+import {ElButton} from "element-plus";
+import {Filter, Refresh} from "@element-plus/icons-vue";
+import {useLocale, useSize} from "@/hooks";
 import {validateSize} from "@/tools/size";
 import FuFilterInput from "@/components/filter-bar/FuFilterInput.vue";
 import FuFilter from "@/components/filter-bar/FuFilter.vue";
 
-defineOptions({name: "FuFilterBar"});
+defineOptions({
+  name: "FuFilterBar",
+  components: {ElButton}
+});
 const {t} = useLocale()
 defineProps({
   size: {

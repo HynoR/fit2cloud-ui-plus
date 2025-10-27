@@ -21,7 +21,9 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, watch, computed, nextTick, getCurrentInstance } from "vue";
-defineOptions({ name: "FuSplitPane" });
+import {ElIcon} from "element-plus";
+import {MoreFilled} from "@element-plus/icons-vue";
+defineOptions({ name: "FuSplitPane", components: {ElIcon, MoreFilled} });
 const props = defineProps({
   min: {
     type: [Number, String],

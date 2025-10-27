@@ -6,7 +6,9 @@
   </el-tooltip>
 </template>
 <script lang="ts" setup>
-defineOptions({ name: "FuTableButton" });
+import {ElButton, ElTooltip} from "element-plus";
+
+defineOptions({ name: "FuTableButton", components: {ElTooltip, ElButton} });
 defineProps({
   label: String,
   disabled: Boolean,

@@ -11,8 +11,9 @@
 
 import FuReadWriteSwitch from "@/components/read-write-switch/FuReadWriteSwitch.vue";
 import { ref, watch } from "vue";
+import {ElInput} from "element-plus";
 
-defineOptions({ name: "FuInputRwSwitch" });
+defineOptions({ name: "FuInputRwSwitch", components: {ElInput} });
 const props = defineProps({
   modelValue: [String, Number],
   writeTrigger: {

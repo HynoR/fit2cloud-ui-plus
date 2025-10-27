@@ -12,7 +12,7 @@
       </div>
     </div>
     <template #reference>
-      <el-button circle icon="ArrowRightBold" @click="toggle" :size="configSize" v-show="showComplex"
+      <el-button circle :icon="ArrowRightBold" @click="toggle" :size="configSize" v-show="showComplex"
                  :class="['fu-complex-components-trigger', {'is-active':active}]"/>
     </template>
   </el-popover>
@@ -20,11 +20,13 @@
 
 <script setup lang="ts">
 import {ref, inject, computed, PropType} from "vue";
+import {ElButton, ElPopover} from "element-plus";
+import {ArrowRightBold} from "@element-plus/icons-vue";
 import {useLocale, useSize} from "@/hooks"
 import {validateSize} from "@/tools/size";
 import {ComplexCondition, referenceKey} from "./types";
 
-defineOptions({name: "FuComplexSearch"});
+defineOptions({name: "FuComplexSearch", components: {ElPopover, ElButton, ArrowRightBold}});
 
 const props = defineProps({
   size: {

@@ -6,12 +6,12 @@
           <!-- 下拉方式 -->
           <el-dropdown @command="handleCommand" v-if="addType === 'dropdown'" :trigger="addTrigger">
             <slot name="dropdownButton">
-              <el-button type="primary" plain >
-                <el-icon>
-                  <component :is="addIcon" />
-                </el-icon>
-                <template v-if="addButtonLabel">{{ addButtonLabel }}</template>
-              </el-button>
+          <el-button type="primary" plain >
+            <el-icon>
+              <component :is="resolvedAddIcon" />
+            </el-icon>
+            <template v-if="addButtonLabel">{{ addButtonLabel }}</template>
+          </el-button>
             </slot>
             <template #dropdown>
               <el-dropdown-menu>
@@ -25,7 +25,7 @@
           <!-- 默认 -->
           <el-button v-else @click="handleCommand" type="primary" plain>
             <el-icon>
-              <component :is="addIcon" />
+              <component :is="resolvedAddIcon" />
             </el-icon>
             <template v-if="addButtonLabel">{{ addButtonLabel }}</template>
 
@@ -39,11 +39,13 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType } from "vue";
+import { computed, PropType } from "vue";
+import {ElButton, ElDropdown, ElDropdownItem, ElDropdownMenu, ElIcon, ElTabPane, ElTabs} from "element-plus";
+import {Plus} from "@element-plus/icons-vue";
 import { DropdownProps } from "@/tools/types";
 import { v4 } from 'uuid';
 
-defineOptions({ name: "FuTabs" });
+defineOptions({ name: "FuTabs", components: {ElTabs, ElTabPane, ElDropdown, ElButton, ElIcon, ElDropdownMenu, ElDropdownItem} });
 type TabPanelName = string | number
 const props = defineProps({
   addType: {
@@ -61,13 +63,20 @@ const props = defineProps({
     validator: (val: string) => ["hover", "click"].includes(val),
   },
   addIcon: {
-    type: String,
+    type: [String, Object, Function],
     default: "Plus",
   },
   addButtonLabel: String,
   addable: Boolean,
 });
 const emit = defineEmits(["command"])
+const iconMap = {Plus}
+const resolvedAddIcon = computed(() => {
+  if (typeof props.addIcon === "string") {
+    return iconMap[props.addIcon as keyof typeof iconMap] || props.addIcon
+  }
+  return props.addIcon
+})
 
 function handleCommand(e: any) {
   const name = v4();

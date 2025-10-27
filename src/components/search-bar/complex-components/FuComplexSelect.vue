@@ -16,11 +16,12 @@
 
 <script setup lang="ts">
 import {ref, computed, PropType, inject} from "vue";
+import {ElOption, ElSelect} from "element-plus";
 import {ComplexCondition, OptionProps, ReferenceContext, referenceKey} from "../types";
 import {validateSize} from "@/tools/size";
 import {useLocale, useSize} from "@/hooks"
 
-defineOptions({name: "FuComplexSelect"});
+defineOptions({name: "FuComplexSelect", components: {ElSelect, ElOption}});
 
 const props = defineProps({
   size: {

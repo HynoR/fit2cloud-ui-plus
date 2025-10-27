@@ -12,7 +12,14 @@
 <script setup lang="ts">
 import FuFilterConditionText from "@/components/filter-bar/FuFilterConditionText.vue";
 import {PropType} from "vue";
+import {ElIcon} from "element-plus";
+import {CloseBold} from "@element-plus/icons-vue";
 import {FilterCondition} from "@/components/filter-bar/types";
+
+defineOptions({
+  name: "FuFilterConditions",
+  components: {ElIcon, CloseBold}
+});
 
 const props = defineProps({
   conditions: Array as PropType<Array<FilterCondition>>

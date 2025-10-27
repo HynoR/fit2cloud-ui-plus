@@ -12,7 +12,7 @@
     </div>
 
     <template #reference>
-      <el-button class="fu-search-bar-button" :icon="icon">
+      <el-button class="fu-search-bar-button" :icon="resolvedIcon">
         <template v-slot:[slotName]>
           {{ t('fu.table.custom_table_rows') }}
         </template>
@@ -23,13 +23,20 @@
 
 <script setup lang="ts">
 import {computed} from "vue";
+import {ElButton, ElCheckbox, ElPopover} from "element-plus";
+import {Setting} from "@element-plus/icons-vue";
 import {tableColumnSelect} from "./utils"
 import {useLocale} from "@/hooks"
 
+defineOptions({
+  name: "FuTableColumnSelectPopover",
+  components: {ElPopover, ElCheckbox, ElButton}
+});
+
 const props = defineProps({
   icon: {
-    type: String,
-    default: "Setting"
+    type: [String, Object, Function],
+    default: "Setting",
   },
   onlyIcon: {
     type: Boolean,
@@ -65,6 +72,13 @@ const {
 } = tableColumnSelect()
 
 const slotName = computed(() => props.onlyIcon ? 'onlyIcon' : 'default')
+const iconMap = {Setting}
+const resolvedIcon = computed(() => {
+  if (typeof props.icon === "string") {
+    return iconMap[props.icon as keyof typeof iconMap] || props.icon
+  }
+  return props.icon
+})
 
 const isFixAll = computed(() => {
   return props.columns?.every((c: any) => {

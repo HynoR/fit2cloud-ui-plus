@@ -51,12 +51,17 @@ import {
   provide,
   Ref,
 } from "vue";
+import {ElButton, ElDrawer, ElIcon} from "element-plus";
+import {ArrowLeftBold, ArrowRightBold, Delete} from "@element-plus/icons-vue";
 import FuFilterConditions from "./FuFilterConditions.vue";
 import {useLocale, useSize} from "@/hooks"
 import {validateSize} from "@/tools/size";
 import {FilterCondition, ReferenceContext, referenceKey} from "@/components/filter-bar/types";
 
-defineOptions({name: "FuFilter"});
+defineOptions({
+  name: "FuFilter",
+  components: {ElIcon, ElDrawer, ElButton, ArrowLeftBold, ArrowRightBold, Delete}
+});
 const {t} = useLocale()
 
 const filterRef = ref<HTMLElement | null>(null)

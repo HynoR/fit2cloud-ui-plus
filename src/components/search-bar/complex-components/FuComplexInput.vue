@@ -9,11 +9,12 @@
 
 <script setup lang="ts">
 import {ref, inject} from "vue";
+import {ElInput} from "element-plus";
 import {ComplexCondition, ReferenceContext, referenceKey} from "../types";
 import {validateSize} from "@/tools/size";
 import {useLocale, useSize} from "@/hooks"
 
-defineOptions({name: "FuComplexInput"});
+defineOptions({name: "FuComplexInput", components: {ElInput}});
 
 const props = defineProps({
   size: {

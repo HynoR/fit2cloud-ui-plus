@@ -21,13 +21,18 @@
 
 <script setup lang="ts">
 import {ref, provide, computed, PropType, Ref, inject} from "vue";
+import {ElIcon, ElPopover} from "element-plus";
+import {Plus} from "@element-plus/icons-vue";
 import FuFilterOption from "./FuFilterOption.vue";
 import {FilterCondition, OptionProps, ReferenceContext, referenceKey, selectKey} from "../types";
 
 import {useLocale} from "@/hooks"
 import {validateSize} from "@/tools/size";
 
-defineOptions({name: "FuFilterSelect"});
+defineOptions({
+  name: "FuFilterSelect",
+  components: {ElPopover, ElIcon, Plus}
+});
 
 const props = defineProps({
   size: {

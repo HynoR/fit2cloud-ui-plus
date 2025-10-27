@@ -19,9 +19,13 @@
 <script setup lang="ts">
 import FuReadWriteSwitch from "./FuReadWriteSwitch.vue";
 import {watch, ref, PropType} from "vue";
+import {ElOption, ElSelect} from "element-plus";
 import {OptionProps} from "./types";
 
-defineOptions({name: "FuSelectRwSwitch"});
+defineOptions({
+  name: "FuSelectRwSwitch",
+  components: {ElSelect, ElOption}
+});
 
 const props = defineProps({
   modelValue: [String, Number],

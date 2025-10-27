@@ -16,15 +16,23 @@
   }">
     <slot>
       <el-icon>
-        <component :is="icon" />
+        <component :is="resolvedIcon" />
       </el-icon>
     </slot>
   </div>
 </template>
 
 <script setup lang="ts">
+import {computed} from "vue";
+import {ElIcon} from "element-plus";
+import {Close, Plus} from "@element-plus/icons-vue";
 import { validateType } from "@/tools/theme"
-defineProps({
+
+defineOptions({
+  name: "FuSpeedDialButton",
+  components: {ElIcon}
+});
+const props = defineProps({
   type: {
     type: String,
     default: "default",
@@ -33,7 +41,7 @@ defineProps({
   rotate: Boolean,
   disabled: Boolean,
   active: Boolean,
-  icon: String,
+  icon: [String, Object, Function],
   size: {
     type: String,
     default: "32px"
@@ -41,5 +49,13 @@ defineProps({
   backgroundColor: String,
   color: String,
   fontSize: String
+})
+
+const iconMap = {Plus, Close}
+const resolvedIcon = computed(() => {
+  if (typeof props.icon === "string") {
+    return iconMap[props.icon as keyof typeof iconMap] || props.icon
+  }
+  return props.icon
 })
 </script>

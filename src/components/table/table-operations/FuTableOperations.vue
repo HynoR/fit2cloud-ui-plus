@@ -21,10 +21,11 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
+import {ElIcon, ElTableColumn} from "element-plus";
 import FuTableButton from "./FuTableButton.vue";
 import FuTableMoreButton from "./FuTableMoreButton.vue";
 
-defineOptions({ name: "FuTableOperations" });
+defineOptions({ name: "FuTableOperations", components: {ElTableColumn, ElIcon} });
 const props = defineProps({
   align: {
     type: String,

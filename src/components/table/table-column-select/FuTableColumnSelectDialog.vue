@@ -1,6 +1,6 @@
 <template>
   <div style="display: inline-block">
-    <el-button class="fu-search-bar-button" :icon="icon" @click="visible = true">
+    <el-button class="fu-search-bar-button" :icon="resolvedIcon" @click="visible = true">
       <template v-slot:[slotName]>
         {{ t('fu.table.custom_table_rows') }}
       </template>
@@ -33,13 +33,20 @@
 </template>
 
 <script setup lang="ts">
-import {ref, computed} from "vue";
+import {computed, ref} from "vue";
+import {ElAlert, ElButton, ElCheckbox, ElDialog} from "element-plus";
+import {Setting} from "@element-plus/icons-vue";
 import {tableColumnSelect} from "./utils"
 import {useLocale} from "@/hooks"
 
+defineOptions({
+  name: "FuTableColumnSelectDialog",
+  components: {ElButton, ElDialog, ElAlert, ElCheckbox}
+});
+
 const props = defineProps({
   icon: {
-    type: String,
+    type: [String, Object, Function],
     default: "Setting"
   },
   onlyIcon: {
@@ -59,6 +66,13 @@ const props = defineProps({
 const {t} = useLocale()
 
 const slotName = computed(() => props.onlyIcon ? 'onlyIcon' : 'default')
+const iconMap = {Setting}
+const resolvedIcon = computed(() => {
+  if (typeof props.icon === "string") {
+    return iconMap[props.icon as keyof typeof iconMap] || props.icon
+  }
+  return props.icon
+})
 
 const cloneColumn = (source: any, target: any) => {
   source.forEach((col: any) => {
